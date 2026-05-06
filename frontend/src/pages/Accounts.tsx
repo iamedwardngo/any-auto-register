@@ -76,8 +76,8 @@ function getCompactStatusMeta(acc: any) {
   ]
   const remainingCredits = overview?.remaining_credits
   const usageTotal = overview?.usage_total
-  if (remainingCredits || usageTotal) {
-    parts.push(`Credits:${remainingCredits || '-'} / Used:${usageTotal || '-'}`)
+  if (remainingCredits != null || usageTotal != null) {
+    parts.push(`Credits:${remainingCredits ?? '-'} / Used:${usageTotal ?? '-'}`)
   }
   return parts.join(' / ')
 }
@@ -626,18 +626,18 @@ function ActionResultHighlights({ payload }: { payload: any }) {
 
   const stats: Array<{ label: string; value: any }> = []
   if ('valid' in payload) stats.push({ label: 'Valid', value: payload.valid })
-  if (payload.membership_type) stats.push({ label: 'Plan', value: payload.membership_type })
+  if (payload.membership_type) stats.push({ label: 'Membership', value: payload.membership_type })
   if (payload.plan) stats.push({ label: 'Plan', value: payload.plan })
   if (payload.plan_id) stats.push({ label: 'Plan ID', value: payload.plan_id })
   if (typeof payload.has_valid_payment_method === 'boolean') stats.push({ label: 'Card Bound', value: payload.has_valid_payment_method })
   if ('trial_eligible' in payload) stats.push({ label: 'Trial Eligible', value: payload.trial_eligible })
-  if (payload.trial_length_days) stats.push({ label: 'Trial Days', value: payload.trial_length_days })
-  if (payload.remaining_credits) stats.push({ label: 'RemainingCredits', value: payload.remaining_credits })
-  if (payload.usage_total) stats.push({ label: 'UsedCredits', value: payload.usage_total })
-  if (payload.plan_credits) stats.push({ label: 'Total Credits', value: payload.plan_credits })
-  if (payload.usage_summary?.plan_title) stats.push({ label: 'Kiro Plan', value: payload.usage_summary.plan_title })
+  if (payload.trial_length_days != null) stats.push({ label: 'Trial Days', value: payload.trial_length_days })
+  if (payload.remaining_credits != null) stats.push({ label: 'RemainingCredits', value: payload.remaining_credits })
+  if (payload.usage_total != null) stats.push({ label: 'UsedCredits', value: payload.usage_total })
+  if (payload.plan_credits != null) stats.push({ label: 'Total Credits', value: payload.plan_credits })
+  if (payload.usage_summary?.plan_title != null) stats.push({ label: 'Kiro Plan', value: payload.usage_summary.plan_title })
   if ('days_until_reset' in (payload.usage_summary || {})) stats.push({ label: 'Reset Countdown', value: payload.usage_summary?.days_until_reset })
-  if (payload.usage_summary?.next_reset_at) stats.push({ label: 'Next Reset', value: payload.usage_summary.next_reset_at })
+  if (payload.usage_summary?.next_reset_at != null) stats.push({ label: 'Next Reset', value: payload.usage_summary.next_reset_at })
   if ('available' in (payload.portal_session || {})) stats.push({ label: 'Portal Available', value: payload.portal_session?.available })
   if (payload.desktop_app_state?.app_name) stats.push({ label: 'Desktop App', value: payload.desktop_app_state?.app_name })
   if ('running' in (payload.desktop_app_state || {})) stats.push({ label: 'Desktop Running', value: payload.desktop_app_state?.running })
