@@ -632,8 +632,8 @@ function ActionResultHighlights({ payload }: { payload: any }) {
   if (typeof payload.has_valid_payment_method === 'boolean') stats.push({ label: 'Card Bound', value: payload.has_valid_payment_method })
   if ('trial_eligible' in payload) stats.push({ label: 'Trial Eligible', value: payload.trial_eligible })
   if (payload.trial_length_days != null) stats.push({ label: 'Trial Days', value: payload.trial_length_days })
-  if (payload.remaining_credits != null) stats.push({ label: 'RemainingCredits', value: payload.remaining_credits })
-  if (payload.usage_total != null) stats.push({ label: 'UsedCredits', value: payload.usage_total })
+  if (payload.remaining_credits != null) stats.push({ label: 'Remaining Credits', value: payload.remaining_credits })
+  if (payload.usage_total != null) stats.push({ label: 'Used Credits', value: payload.usage_total })
   if (payload.plan_credits != null) stats.push({ label: 'Total Credits', value: payload.plan_credits })
   if (payload.usage_summary?.plan_title != null) stats.push({ label: 'Kiro Plan', value: payload.usage_summary.plan_title })
   if ('days_until_reset' in (payload.usage_summary || {})) stats.push({ label: 'Reset Countdown', value: payload.usage_summary?.days_until_reset })
@@ -703,8 +703,8 @@ function ActionResultHighlights({ payload }: { payload: any }) {
                   <div>Unit: {formatResultValue(item.unit)}</div>
                   <div>Trial Status: {formatResultValue(item.trial_status)}</div>
                   <div>Trial Expiry: {formatResultValue(item.trial_expiry)}</div>
-                  <div>TrialLimit: {formatResultValue(item.trial_usage_limit)}</div>
-                  <div>TrialRemaining: {formatResultValue(item.trial_remaining_usage)}</div>
+                  <div>Trial Limit: {formatResultValue(item.trial_usage_limit)}</div>
+                  <div>Trial Remaining: {formatResultValue(item.trial_remaining_usage)}</div>
                 </div>
               </div>
             ))}
