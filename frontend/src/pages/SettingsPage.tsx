@@ -373,7 +373,7 @@ export default function SettingsPage({
 
   // Page title mapping
   const titles: Record<string, string> = {
-    general: 'GeneralSettings',
+    general: 'General Settings',
     register: 'Registration',
     mailbox: 'Email Service',
     captcha: 'Captcha Service',

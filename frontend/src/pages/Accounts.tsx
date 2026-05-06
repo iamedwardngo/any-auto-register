@@ -1461,7 +1461,7 @@ function ExportMenu({
       triggerBrowserDownload(blob, filename)
       setOpen(false)
     } catch (e: any) {
-      window.alert(e?.message || 'ExportFailed')
+      window.alert(e?.message || 'Export Failed')
     } finally {
       setLoading(null)
     }
@@ -1734,7 +1734,7 @@ export default function Accounts() {
               size="sm"
               disabled={batchRefreshing || loading}
               className="h-7 px-2.5 text-[var(--text-muted)] hover:text-amber-500 hover:bg-amber-500/10"
-              title=" Refresh all account credits"
+              title="Refresh all account credits"
               onClick={async () => {
                 setBatchRefreshing(true)
                 try {
